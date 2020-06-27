@@ -18,7 +18,6 @@ body {
   font-family: "Roboto", sans-serif;
   font-size: 16px;
   background: var(--light-color);
-  margin: 20px;
 }
 
 ul {
@@ -41,10 +40,12 @@ a {
 /* Chat Page */
 
 .chat-container {
-  max-width: 1100px;
+  max-width: 100%;
   background: #fff;
-  margin: 30px auto;
+  margin: 0;
   overflow: hidden;
+  width: 100%;
+  height: 100%;
 }
 
 .chat-header {
@@ -56,6 +57,10 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
 }
 
 .chat-main {
@@ -68,6 +73,8 @@ a {
   color: #fff;
   padding: 20px 20px 60px;
   overflow-y: scroll;
+  position: relative;
+  height: 100%;
 }
 
 .chat-sidebar h2 {
@@ -87,8 +94,9 @@ a {
 
 .chat-messages {
   padding: 30px;
-  max-height: 500px;
   overflow-y: scroll;
+  max-height: 700px;
+  margin-bottom: 80px;
 }
 
 .chat-messages .message {
@@ -113,6 +121,9 @@ a {
 .chat-form-container {
   padding: 20px 30px;
   background-color: var(--dark-color-a);
+  width: 100%;
+  position: fixed;
+  bottom: 0;
 }
 
 .chat-form-container form {

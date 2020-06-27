@@ -6,14 +6,15 @@ const chatForm = document.getElementById("chat-form");
 const chatMessages = document.querySelector(".chat-messages");
 const roomName = document.getElementById("room-name");
 const userList = document.getElementById("users");
-
+// import Qs from 'querystring';
 // Get username and room from URL
 const { username, room } = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
 });
 
 // const socket = io();
-const socket = io.connect("http://localhost:8080");
+const remote = "http://35.193.213.85:8080/"
+const socket = io.connect(remote);
 
 // Join chatroom
 socket.emit("joinRoom", { username, room });
