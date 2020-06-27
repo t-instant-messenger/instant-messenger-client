@@ -7,9 +7,10 @@ if (require("electron-squirrel-startup")) {
   // eslint-disable-line global-require
   app.quit();
 }
-let addWindow;
-let mainWindow;
-// function createWindow() {}
+
+// Unccomment once found connection
+
+let mainWindow = null;
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -24,11 +25,12 @@ app.on("ready", function () {
   // and load the index.html of the app.
   mainWindow.loadURL(
     url.format({
-      pathname: path.join(__dirname, "index.html"),
+      pathname: path.join(__dirname, "./public/index.html"),
       protocol: "file:",
       slashes: true,
     })
   );
+
   const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
 
   Menu.setApplicationMenu(mainMenu);
