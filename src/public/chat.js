@@ -6,6 +6,7 @@ const chatForm = document.getElementById("chat-form");
 const chatMessages = document.querySelector(".chat-messages");
 const roomName = document.getElementById("room-name");
 const userList = document.getElementById("users");
+const electron = require('electron');
 // import Qs from 'querystring';
 // Get username and room from URL
 const { username, room } = Qs.parse(location.search, {
@@ -30,6 +31,13 @@ socket.on("message", (message) => {
   console.log(message);
   outputMessage(message);
 
+  const notif = {
+    title: 'New Message',
+    body:  message.username+ ': '+ message.text
+  }
+  if(!document.hasFocus()){
+    const newNotification = new Notification(notif.title, notif);
+  }
   // Scroll down
   chatMessages.scrollTop = chatMessages.scrollHeight;
 });

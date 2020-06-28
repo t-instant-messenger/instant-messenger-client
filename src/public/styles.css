@@ -57,10 +57,10 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: fixed;
+  /*position: fixed;
   width: 100%;
   top: 0;
-  z-index: 1000;
+  z-index: 1000;*/
 }
 
 .chat-main {
@@ -73,8 +73,10 @@ a {
   color: #fff;
   padding: 20px 20px 60px;
   overflow-y: scroll;
-  position: relative;
+  /*position: fixed;
+  top: 68px;*/
   height: 100%;
+  width: auto;
 }
 
 .chat-sidebar h2 {
@@ -97,6 +99,9 @@ a {
   overflow-y: scroll;
   max-height: 700px;
   margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
 }
 
 .chat-messages .message {
@@ -104,6 +109,7 @@ a {
   margin-bottom: 15px;
   background-color: var(--light-color);
   border-radius: 5px;
+
 }
 
 .chat-messages .message .meta {
