@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="css/materialize.min.css"
+      media="screen,projection"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Change Language</title>
+  </head>
+  <body>
+    <!--Change to list form-->
+    <div class="input-field col s12 m12 form-control">
+      <i class="fa material-icons prefix">language</i>
+      <select id="lang" name="lang">
+        <option value="en">English</option>
+
+        <option value="es">Spanish</option>
+        <option value="pt">Portugal</option>
+        <option value="zh">Chinese</option>
+        <option value="th">Thai</option>
+      </select>
+      <label for="lang">Select a language</label>
+    </div>
+
+    <!--Script tags-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.2/qs.min.js"
+      integrity="sha256-TDxXjkAUay70ae/QJBEpGKkpVslXaHHayklIVglFRT4="
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var elems = document.querySelectorAll("select");
+        var instances = M.FormSelect.init(elems);
+      });
+    </script>
+    <!--       -->
+  </body>
+</html>
