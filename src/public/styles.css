@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 
 :root {
-  --dark-color-a: #667aff;
-  --dark-color-b: #7386ff;
-  --light-color: #e6e9ff;
+  --dark-color-a: #b31929;
+  --dark-color-b: #b31929;
+  --light-color: #fadcdf;
   --success-color: #5cb85c;
   --error-color: #d9534f;
 }
@@ -20,6 +20,10 @@ body {
   background: var(--light-color);
 }
 
+#nav {
+  background-color: #a7333f;
+}
+
 ul {
   list-style: none;
 }
@@ -28,13 +32,11 @@ a {
   text-decoration: none;
 }
 
-.btn {
+#leave-room.btn,
+#send.btn-large {
   cursor: pointer;
-  padding: 5px 15px;
   background: var(--light-color);
   color: var(--dark-color-a);
-  border: 0;
-  font-size: 17px;
 }
 
 /* Chat Page */
@@ -112,21 +114,20 @@ a {
 .chat-messages .message {
   padding: 10px;
   margin-bottom: 15px;
-  background-color: var(--light-color);
+  background-color: #c44552;
   border-radius: 5px;
-
 }
 
 .chat-messages .message .meta {
   font-size: 15px;
   font-weight: bold;
-  color: var(--dark-color-b);
+  color: var(--light-color);
   opacity: 0.7;
   margin-bottom: 7px;
 }
 
 .chat-messages .message .meta span {
-  color: #777;
+  color: white;
 }
 
 .chat-form-container {
@@ -149,55 +150,18 @@ a {
 }
 
 /* Join Page */
-.join-container {
-  max-width: 500px;
-  margin: 80px auto;
-  color: #fff;
+
+#join-chat {
+  background-color: #a7333f;
 }
 
-.join-header {
-  text-align: center;
-  padding: 20px;
-  background: var(--dark-color-a);
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+.input-field input[type="text"]:focus {
+  border-bottom: 1px solid #a7333f;
+  box-shadow: 0 1px 0 0 #a7333f;
 }
 
-.join-main {
-  padding: 30px 40px;
-  background: var(--dark-color-b);
-}
-
-.join-main p {
-  margin-bottom: 20px;
-}
-
-.join-main .form-control {
-  margin-bottom: 20px;
-}
-
-.join-main label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.join-main input[type="text"] {
-  font-size: 16px;
-  padding: 5px;
-  height: 40px;
-  width: 100%;
-}
-
-.join-main select {
-  font-size: 16px;
-  padding: 5px;
-  height: 40px;
-  width: 100%;
-}
-
-.join-main .btn {
-  margin-top: 20px;
-  width: 100%;
+ul.dropdown-content.select-dropdown li span {
+  color: #a7333f;
 }
 
 @media (max-width: 700px) {
