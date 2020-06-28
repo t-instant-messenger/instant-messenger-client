@@ -6,6 +6,7 @@ const chatForm = document.getElementById("chat-form");
 const chatMessages = document.querySelector(".chat-messages");
 const roomName = document.getElementById("room-name");
 const userList = document.getElementById("users");
+const tswitch = document.getElementById("translate-switch");
 
 const electron = require("electron");
 const axios = require("axios");
@@ -16,13 +17,12 @@ const { username, room, lang } = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
 });
 
-const remote = "http://35.193.213.85:8080/"
-const key = 'AIzaSyDy8703fBn4Hf1gaMd3a8GIb-e35EnMKcw'
+const remote = "http://35.193.213.85:8080/";
+const key = "AIzaSyDy8703fBn4Hf1gaMd3a8GIb-e35EnMKcw";
 const socket = io.connect(remote);
 
 // Join chatroom
-socket.emit("joinRoom", { username, room});
-
+socket.emit("joinRoom", { username, room });
 
 // Get room and users
 socket.on("roomUsers", ({ room, users }) => {
@@ -34,8 +34,10 @@ socket.on("roomUsers", ({ room, users }) => {
 socket.on("message", async (message) => {
   console.log(message);
 
-  const {data} = await axios.post(`https://translation.googleapis.com/language/translate/v2?q=${message.text}&target=${lang}&format=text&key=${key}`)
-   message.text = data.data.translations[0].translatedText;
+  const { data } = await axios.post(
+    `https://translation.googleapis.com/language/translate/v2?q=${message.text}&target=${lang}&format=text&key=${key}`
+  );
+  message.translated = data.data.translations[0].translatedText;
 
   outputMessage(message);
 
@@ -65,14 +67,39 @@ chatForm.addEventListener("submit", (e) => {
   e.target.elements.msg.focus();
 });
 
+tswitch.addEventListener("change", () => {
+  if (tswitch.checked) {
+    Array.from(document.getElementsByClassName("orginal-text")).forEach(
+      (e) => (e.style.display = "none")
+    );
+    Array.from(document.getElementsByClassName("translate-text")).forEach(
+      (e) => (e.style.display = "block")
+    );
+  } else {
+    Array.from(document.getElementsByClassName("translate-text")).forEach(
+      (e) => (e.style.display = "none")
+    );
+    Array.from(document.getElementsByClassName("orginal-text")).forEach(
+      (e) => (e.style.display = "block")
+    );
+  }
+});
+
 // Output message to DOM
 function outputMessage(message) {
   const div = document.createElement("div");
   div.classList.add("message");
+  let m;
+
   div.innerHTML = `<p class="meta">${message.username} <span>${message.time}</span></p>
-  <p class="text">
-    ${message.text}
-  </p>`;
+
+
+  <p class="text translate-text" style="display: block;">
+    ${message.translated}
+  </p>
+  <p class="text orginal-text" style="display: none;">${message.text} </p>
+  `;
+
   document.querySelector(".chat-messages").appendChild(div);
 }
 
