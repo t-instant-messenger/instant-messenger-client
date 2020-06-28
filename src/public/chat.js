@@ -31,11 +31,11 @@ socket.on("roomUsers", ({ room, users }) => {
 // Message from server
 socket.on("message", async (message) => {
   console.log(message);
-  // const { data } = await axios.post(
-  //   `https://translation.googleapis.com/language/translate/v2?q=${message.text}&target=${message.lang}&format=text&key=${key}`
-  // );
-  // message.text = data.data.translations[0].translatedText;
-  //message.text = data;
+  const { data } = await axios.post(
+    `https://translation.googleapis.com/language/translate/v2?q=${message.text}&target=${message.lang}&format=text&key=${key}`
+  );
+  message.text = data.data.translations[0].translatedText;
+  message.text = data;
   outputMessage(message);
 
   const notif = {
