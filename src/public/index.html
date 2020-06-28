@@ -25,52 +25,33 @@
         <div class="col s12 m6 offset-m3">
           <div class="card-panel z-depth-5 join-container">
             <main class="join-main">
-            <h4 class="center">TIM</h4>
-            <div class="row join-main">
-              <form class="col s12 m12" action="chat.html">
+              <h4 class="center">WELCOME</h4>
+              <div class="row join-main">
                 <div class="row">
-                  <div class="input-field col s12 m12 form-control">
-                    <i class="mdi-action-account-circle prefix"></i>
-                    <input
-                      id="username"
-                      name="username"
-                      type="text"
-                      class="validate"
-                    />
-                    <label for="username">Username</label>
-                  </div>
-
-                  <div class="input-field col s12 m12 form-control">
-                    <i class="mdi-communication-email prefix"></i>
-                    <input id="room" name="room" type="text" class="validate" />
-                    <label for="room">Room Name</label>
-                  </div>
-
-                  <div class="input-field col s12 m12 form-control">
-                    <i class="fa material-icons prefix">language</i>
-                    <select id="lang" name="lang">
-                      <option value="en">English</option>
-
-                      <option value="es">Spanish</option>
-                      <option value="pt">Portugal</option>
-                      <option value="zh">Chinese</option>
-                      <option value="th">Thai</option>
-                    </select>
-                    <label for="lang">Select a language</label>
-                  </div>
+                  <ul class="right">
+                    <li>
+                      <a
+                        id="leave-room"
+                        href="./html/login.html"
+                        class="waves-effect waves-light btn leave-room"
+                        >Login</a
+                      >
+                    </li>
+                  </ul>
+                  <ul class="right">
+                    <li>
+                      <a
+                        id="leave-room"
+                        href="./html/signup.html"
+                        class="waves-effect waves-light btn leave-room"
+                        >Sign Up</a
+                      >
+                    </li>
+                  </ul>
                 </div>
-                <button
-                  id="join-chat"
-                  class="btn waves-effect waves-light center"
-                  type="submit"
-                  name="action"
-                >
-                  Join Chat
-                  <i class="fa fa-sign-in right"></i>
-                </button>
-              </form>
-              </main>
-            </div>
+              </div>
+            </main>
+
             <!--row-->
           </div>
           <!--card-->
@@ -88,13 +69,13 @@
       integrity="sha256-TDxXjkAUay70ae/QJBEpGKkpVslXaHHayklIVglFRT4="
       crossorigin="anonymous"
     ></script>
-<script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
     <script>
-    document.addEventListener("DOMContentLoaded", function () {
-  var elems = document.querySelectorAll("select");
-  var instances = M.FormSelect.init(elems);
-});
-</script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var elems = document.querySelectorAll("select");
+        var instances = M.FormSelect.init(elems);
+      });
+    </script>
   </body>
 </html>
