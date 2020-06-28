@@ -6,6 +6,8 @@ const chatForm = document.getElementById("chat-form");
 const chatMessages = document.querySelector(".chat-messages");
 const roomName = document.getElementById("room-name");
 const userList = document.getElementById("users");
+const langSelector = document.getElementById('lang');
+//const lang = langSelector.options[langSelector.selectedIndex].value
 const electron = require('electron');
 const axios = require('axios');
 // import Qs from 'querystring';
@@ -14,13 +16,12 @@ const { username, room, lang} = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
 });
 
-// const socket = io();
-//const remote = "http://35.193.213.85:8080/"
+const remote = "http://35.193.213.85:8080/"
 const key = 'AIzaSyDy8703fBn4Hf1gaMd3a8GIb-e35EnMKcw'
-const socket = io.connect('http://localhost:8080/');
+const socket = io.connect(remote);
 
 // Join chatroom
-socket.emit("joinRoom", { username, room, lang});
+socket.emit("joinRoom", { username, room});
 
 // Get room and users
 socket.on("roomUsers", ({ room, users }) => {
@@ -31,9 +32,8 @@ socket.on("roomUsers", ({ room, users }) => {
 // Message from server
 socket.on("message", async (message) => {
   console.log(message);
-  const {data} = await axios.post(`https://translation.googleapis.com/language/translate/v2?q=${message.text}&target=${message.lang}&format=text&key=${key}`)
-   message.text = data.data.translations[0].translatedText
-  //message.text = data;
+  const {data} = await axios.post(`https://translation.googleapis.com/language/translate/v2?q=${message.text}&target=${lang}&format=text&key=${key}`)
+   message.text = data.data.translations[0].translatedText;
   outputMessage(message);
 
   const notif = {
