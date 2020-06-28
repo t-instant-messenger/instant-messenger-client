@@ -40,11 +40,23 @@
               required
             />
           </div>
+          <div class="form-control">
+            <label for="lang">Pick a language</label>
+            <select id="lang" name="lang">
+              <option value="en">English</option>
+              <option value="es">Spanish</option>
+              <option value="pt">Portugal</option>
+              <option value="zh">Chinese</option>
+              <option value="th">Thai</option>
+            </select>
+          </div>
           <script
             src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.2/qs.min.js"
             integrity="sha256-TDxXjkAUay70ae/QJBEpGKkpVslXaHHayklIVglFRT4="
             crossorigin="anonymous"
           ></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+
           <button type="submit" class="btn">Join Chat</button>
         </form>
       </main>
