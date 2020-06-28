@@ -35,7 +35,7 @@ socket.on("message", async (message) => {
     `https://translation.googleapis.com/language/translate/v2?q=${message.text}&target=${message.lang}&format=text&key=${key}`
   );
   message.text = data.data.translations[0].translatedText;
-  message.text = data;
+//   message.text = data;
   outputMessage(message);
 
   const notif = {
