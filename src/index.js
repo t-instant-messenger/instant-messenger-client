@@ -11,7 +11,7 @@ if (require("electron-squirrel-startup")) {
 // Unccomment once found connection
 
 let mainWindow = null;
-
+let langWin = null;
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
@@ -21,8 +21,8 @@ app.on("ready", function () {
     width: 800,
     //resizable: false,
     webPreferences: {
-      nodeIntegration: true
-    }
+      nodeIntegration: true,
+    },
   });
 
   // and load the index.html of the app.
@@ -59,9 +59,28 @@ app.on("activate", () => {
   }
 });
 
-
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
+
+// All language
+const languages = [
+  {
+    label: "English",
+    key: "en",
+  },
+  {
+    label: "Spanish",
+  },
+  {
+    label: "Chinese",
+  },
+  {
+    label: "Portugese",
+  },
+  {
+    label: "Thai",
+  },
+];
 
 // Create menu template
 const mainMenuTemplate = [
@@ -79,6 +98,31 @@ const mainMenuTemplate = [
         accelerator: "CmdOrCtrl+R",
         click() {
           mainWindow.reload();
+        },
+      },
+    ],
+  },
+  {
+    label: "Edit",
+    submenu: [
+      {
+        label: "Change Language",
+        click() {
+          langWin = new BrowserWindow({
+            width: 200,
+            height: 350,
+            //resizable: false,
+            webPreferences: {
+              nodeIntegration: true,
+            },
+          });
+          langWin.loadURL(
+            url.format({
+              pathname: path.join(__dirname, "public/lang.html"),
+              protocol: "file:",
+              slashes: true,
+            })
+          );
         },
       },
     ],
