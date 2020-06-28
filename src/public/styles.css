@@ -66,8 +66,12 @@ a {
 }
 
 .chat-main {
+  background-color: whitesmoke;
   display: grid;
   grid-template-columns: 1fr 3fr;
+  position: fixed;
+  height: 100vh;
+  width: 100%;
 }
 
 .chat-sidebar {
@@ -97,13 +101,14 @@ a {
 }
 
 .chat-messages {
+  /*padding: 30px 30px 150px 30px;*/
   padding: 30px;
   overflow-y: scroll;
-  max-height: 700px;
-  margin-bottom: 80px;
+  height: calc(100% - 120px);
   display: flex;
   flex-direction: column;
   align-content: flex-end;
+  position: relative;
 }
 
 .chat-messages .message {
