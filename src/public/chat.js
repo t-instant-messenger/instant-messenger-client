@@ -18,7 +18,7 @@ const { username, room, lang } = Qs.parse(location.search, {
 });
 
 const remote = "http://35.193.213.85:8080/";
-const key = "AIzaSyDy8703fBn4Hf1gaMd3a8GIb-e35EnMKcw";
+const key = "";
 const socket = io.connect(remote);
 
 // Join chatroom
